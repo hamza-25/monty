@@ -72,7 +72,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 					token = strtok(NULL, " \n\t$");
 					if (!token || atoi(token) == 0)
 					{
-						fprintf(stderr, "L<%d>: usage: push integer\n", num_line);
+						fprintf(stderr, "L%d: usage: push integer\n", num_line);
 						free_stack(global_data.top), fclose(file), exit(1);
 					}
 					global_data.value = atoi(token);
@@ -84,7 +84,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 		}
 		if (instru[index].opcode == NULL)
 		{
-			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", num_line, token);
+			fprintf(stderr, "L%d: unknown instruction %s\n", num_line, token);
 			free_stack(global_data.top), fclose(file), exit(1);
 		}
 		token = strtok(NULL, " \n\t$");
