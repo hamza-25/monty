@@ -1,29 +1,28 @@
 #include "monty.h"
 void f_push(stack_t **stack, unsigned int line_number)
 {
-    stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
+	stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
 
-    (void)line_number;
-    if (!new_node)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-	free_stack(top);
-        exit(1);
-    }
-    
-    new_node->n = value;
-    new_node->next = NULL;
-    if (*stack)
-	    new_node->next = *stack;
-    new_node->prev = NULL;
-    *stack = new_node;
-    top = new_node;
+	(void)line_number;
+	if (!new_node)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_stack(top);
+		exit(1);
+	}
+	new_node->n = value;
+	new_node->next = NULL;
+	if (*stack)
+		new_node->next = *stack;
+	new_node->prev = NULL;
+	*stack = new_node;
+	top = new_node;
 }
 
 void f_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-	
+
 	(void)line_number;
 	while(current)
 	{
@@ -35,9 +34,9 @@ void f_pall(stack_t **stack, unsigned int line_number)
 void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 {
 	instruction_t instru[] = {
-		{"push", f_push},
-		{"pall", f_pall},
-		{NULL, NULL}
+	{"push", f_push},
+	{"pall", f_pall},
+	{NULL, NULL}
 	};
 	int index;
 	char *token;
