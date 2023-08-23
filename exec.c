@@ -24,7 +24,7 @@ void f_pall(stack_t **stack, unsigned int line_number)
 	stack_t *current = *stack;
 
 	(void)line_number;
-	while(current)
+	while (current)
 	{
 		fprintf(stdout, "%d\n", current->n);
 		current = current->next;
@@ -41,12 +41,12 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	int index;
 	char *token;
 
-	(void)file;	
+	(void)file;
 	token = strtok(line, " \n\t$");
-	while(token)
+	while (token)
 	{
 		index = 0;
-		while(instru[index].opcode)
+		while (instru[index].opcode)
 		{
 			if (strcmp(instru[index].opcode, token) == 0)
 			{
@@ -56,9 +56,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 					if (!token || atoi(token) == 0)
 					{
 						fprintf(stderr, "L<%d>: usage: push integer\n", num_line);
-						free_stack(top);
-						fclose(file);
-						exit (1);
+						free_stack(top), fclose(file), exit(1);
 					}
 					value = atoi(token);
 				}
@@ -70,9 +68,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 		if (instru[index].opcode == NULL)
 		{
 			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", num_line, token);
-			free_stack(top);
-			fclose(file);
-			exit (1);
+			free_stack(top), fclose(file), exit(1);
 		}
 		token = strtok(NULL, " \n\t$");
 	}
