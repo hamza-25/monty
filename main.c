@@ -6,7 +6,7 @@ int value;
 int main(int argc, char *argv[])
 {
 	FILE *fd;
-	char line[256], *token;
+	char line[256];
 	stack_t *stack = NULL;
 	int counter = 1;
 

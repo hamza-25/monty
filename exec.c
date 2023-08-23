@@ -3,6 +3,7 @@ void f_push(stack_t **stack, unsigned int line_number)
 {
     stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
 
+    (void)line_number;
     if (!new_node)
     {
         fprintf(stderr, "Error: malloc failed\n");
@@ -21,7 +22,8 @@ void f_push(stack_t **stack, unsigned int line_number)
 void f_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-
+	
+	(void)line_number;
 	while(current)
 	{
 		fprintf(stdout, "%d\n", current->n);
@@ -29,7 +31,7 @@ void f_pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
-int exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
+void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 {
 	instruction_t instru[] = {
 		{"push", f_push},
@@ -38,7 +40,8 @@ int exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	};
 	int index;
 	char *token;
-	
+
+	(void)file;	
 	token = strtok(line, " \n\t$");
 	while(token)
 	{
@@ -66,5 +69,4 @@ int exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", num_line, token), exit (1);
 		token = strtok(NULL, " \n\t$");
 	}
-
 }

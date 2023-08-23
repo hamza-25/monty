@@ -39,6 +39,6 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int exec(stack_t **stack, unsigned int num_line, char *line, FILE *file);
+void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file);
 
 #endif
