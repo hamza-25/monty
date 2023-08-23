@@ -1,61 +1,69 @@
 #include "monty.h"
 void f_push(stack_t **stack, unsigned int line_number)
 {
-	char *token;
-	int value;
-
-    if (!token)
-    {
-        fprintf(stderr, "Error: Missing argument for push at line %u\n", line_number);
-        exit(1);
-    }
-    
-    value = atoi(token);
-    
     stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
+
     if (!new_node)
     {
-        fprintf(stderr, "Error: Memory allocation failed\n");
+        fprintf(stderr, "Error: malloc failed\n");
         exit(1);
     }
     
     new_node->n = value;
-    new_node->next = *stack;
+    new_node->next = NULL;
+    if (*stack)
+	    new_node->next = *stack;
+    new_node->prev = NULL;
     *stack = new_node;
     top = new_node;
 }
-int exec(stack_t **stack, unsigned int num_line, char *line)
+
+void f_pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	while(current)
+	{
+		fprintf(stdout, "%d\n", current->n);
+		current = current->next;
+	}
+}
+
+int exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 {
 	instruction_t instru[] = {
 		{"push", f_push},
+		{"pall", f_pall},
 		{NULL, NULL}
 	};
-	int index = 0, data;
+	int index;
 	char *token;
-	/*const char *cons_token;*/
 	
 	token = strtok(line, " \n\t$");
 	while(token)
 	{
+		index = 0;
 		while(instru[index].opcode)
 		{
-			printf("instr\n");
 			if (strcmp(instru[index].opcode, token) == 0)
 			{
-			token = strtok(NULL, " \n\t$");
-			if (!token)
-				return (0);
-			instru[index].f(stack, num_line);
-			break;
-			}
-			/*cons_token = token;
-			if (atoi(cons_token) == 0)
+				if (strcmp(instru[index].opcode, "push") == 0)
+				{
+					token = strtok(NULL, " \n\t$");
+					if (!token || atoi(token) == 0)
+					{
+						fprintf(stderr, "L<%d>: usage: push integer\n", num_line);
+						exit (1);
+					}
+					value = atoi(token);
+				}
+				instru[index].f(stack, num_line);
 				break;
-			data = atoi(cons_token);
-			printf("%d\n", data);*/
+			}
 			index++;
-
 		}
+		if (instru[index].opcode == NULL)
+			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", num_line, token), exit (1);
 		token = strtok(NULL, " \n\t$");
 	}
 

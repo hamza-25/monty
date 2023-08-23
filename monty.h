@@ -2,6 +2,7 @@
 #define MONTY_H
 
 #include <stdio.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -23,6 +24,7 @@ typedef struct stack_s
 } stack_t;
 
 extern stack_t *top;
+extern int value;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -37,6 +39,6 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int exec(stack_t **stack, unsigned int num_line, char *line);
+int exec(stack_t **stack, unsigned int num_line, char *line, FILE *file);
 
 #endif
