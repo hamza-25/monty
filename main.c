@@ -1,7 +1,6 @@
 #include "monty.h"
 
-stack_t *top = NULL;
-int value;
+data_t global_data = {0, NULL, NULL};
 
 /**
  * main - entry point
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
 		exec(&stack, counter, line, fd);
 		counter++;
 	}
-	free_stack(top);
+	free_stack(global_data.top);
 	fclose(fd);
 	return (0);
 }

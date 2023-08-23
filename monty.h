@@ -1,12 +1,24 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/*extern stack_t *top;
+extern int value;*/
+
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+
+typedef struct data_s
+{
+	int value;
+	FILE *file;
+	struct stack_s *top;
+} data_t;
+extern data_t global_data;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -23,8 +35,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-extern stack_t *top;
-extern int value;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
