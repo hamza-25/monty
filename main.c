@@ -24,8 +24,10 @@ int main(int argc, char *argv[])
 	while(fgets(line, sizeof(line), fd) != NULL)
 	{
 		exec(&stack, counter, line, fd);
+		printf("--%d--\n", top->n);
 		counter++;
 	}
+	free_stack(top);
 	fclose(fd);
 	return (0);
 }

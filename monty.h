@@ -40,5 +40,5 @@ typedef struct instruction_s
 } instruction_t;
 
 void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file);
-
+void free_stack(stack_t *top);
 #endif

@@ -7,6 +7,7 @@ void f_push(stack_t **stack, unsigned int line_number)
     if (!new_node)
     {
         fprintf(stderr, "Error: malloc failed\n");
+	free_stack(top);
         exit(1);
     }
     
@@ -56,6 +57,8 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 					if (!token || atoi(token) == 0)
 					{
 						fprintf(stderr, "L<%d>: usage: push integer\n", num_line);
+						free_stack(top);
+						fclose(file);
 						exit (1);
 					}
 					value = atoi(token);
@@ -66,7 +69,12 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 			index++;
 		}
 		if (instru[index].opcode == NULL)
-			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", num_line, token), exit (1);
+		{
+			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", num_line, token);
+			free_stack(top);
+			fclose(file);
+			exit (1);
+		}
 		token = strtok(NULL, " \n\t$");
 	}
 }
