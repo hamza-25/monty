@@ -1,4 +1,9 @@
 #include "monty.h"
+/**
+ * f_push - push items in the stack
+ * @stack: the stack node
+ * @line_number: line number from file interp
+*/
 void f_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
@@ -18,6 +23,11 @@ void f_push(stack_t **stack, unsigned int line_number)
 	*stack = new_node;
 	top = new_node;
 }
+/**
+ * f_pall - print all items in stack
+ * @stack: the stack node
+ * @line_number: line number from file interp
+*/
 
 void f_pall(stack_t **stack, unsigned int line_number)
 {
@@ -31,6 +41,13 @@ void f_pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * exec - function that loocking for opcode to execute
+ * @line: line read from file
+ * @num_line: number of line from file
+ * @stack: the stack node
+ * @file: file to close if exit program
+*/
 void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 {
 	instruction_t instru[] = {

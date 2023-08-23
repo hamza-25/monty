@@ -3,6 +3,13 @@
 stack_t *top = NULL;
 int value;
 
+/**
+ * main - entry point
+ * @argc: number of args
+ * @argv: args vector
+ * Return: int
+*/
+
 int main(int argc, char *argv[])
 {
 	FILE *fd;

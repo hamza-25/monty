@@ -1,8 +1,7 @@
 #include "monty.h"
 /**
- *
- *
- *
+ * free_stack - func that free linked list
+ * @top: head of the list
 */
 void free_stack(stack_t *top)
 {
