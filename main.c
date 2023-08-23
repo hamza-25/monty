@@ -5,7 +5,7 @@ int value;
 
 /**
  * main - entry point
- * @argc: number of args
+ * @argc: numbers of args
  * @argv: args vector
  * Return: int
 */

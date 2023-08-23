@@ -44,7 +44,7 @@ void f_pall(stack_t **stack, unsigned int line_number)
 /**
  * exec - function that loocking for opcode to execute
  * @line: line read from file
- * @num_line: number of line from file
+ * @num_line: number of lines from file
  * @stack: the stack node
  * @file: file to close if exit program
 */
