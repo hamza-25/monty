@@ -21,10 +21,9 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(1);
 	}
-	while(fgets(line, sizeof(line), fd) != NULL)
+	while (fgets(line, sizeof(line), fd) != NULL)
 	{
 		exec(&stack, counter, line, fd);
-		printf("--%d--\n", top->n);
 		counter++;
 	}
 	free_stack(top);
