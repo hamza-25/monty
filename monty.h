@@ -49,7 +49,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file);
 void free_stack(stack_t *top);
 void f_push(stack_t **stack, unsigned int line_number);
 void f_pall(stack_t **stack, unsigned int line_number);
