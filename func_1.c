@@ -44,6 +44,12 @@ void f_pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * pint - function that print number of the head
+ * @line_number: number of line read from file
+ * @stack: the stack node
+*/
+
 void f_pint(stack_t **stack, unsigned int line_number)
 {
 	if (!(*stack))
