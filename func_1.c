@@ -125,7 +125,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 		if (instru[index].opcode == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", num_line, token);
-			/*free_stack(global_data.top), fclose(file), exit(1);*/
+			free_stack(global_data.top), fclose(file), exit(1);
 		}
 		token = strtok(NULL, " \n\t$");
 	}
