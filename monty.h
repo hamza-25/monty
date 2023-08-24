@@ -1,15 +1,21 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-/*extern stack_t *top;
-extern int value;*/
-
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+
+/**
+ * struct data_s - collecte data
+ * @n: integer
+ * @file: source of opcode
+ * @top: the head of double linked list
+ *
+ * Description: struct for collecting data to create stack
+ */
 
 typedef struct data_s
 {
