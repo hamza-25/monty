@@ -36,7 +36,6 @@ void f_swap(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
 	}
-	(void)line_number;
 	temp = (*stack)->next;
 	(*stack)->next = temp->next;
 	(*stack)->prev = temp;
@@ -45,4 +44,30 @@ void f_swap(stack_t **stack, unsigned int line_number)
 	temp->next = (*stack);
 	(*stack) = temp;
 	global_data.top = *stack;
+}
+
+/**
+ * f_add - function that adds two first element
+ * @line_number: number of line read from file
+ * @stack: the stack node
+*/
+
+void f_add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack, *temp = *stack;
+	int count = 0;
+
+	while (current)
+	{
+		current = current->next;
+		count++;
+	}
+	if (count <= 2)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		free_stack(global_data.top), fclose(global_data.file), exit(1);		}
+	*stack = (*stack)->next;
+	(*stack)->n += temp->n;
+	global_data.top = *stack;
+	free(temp);
 }
