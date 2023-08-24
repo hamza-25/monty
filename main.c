@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(1);
 	}
+	global_data.file = fd;
 	while (fgets(line, sizeof(line), fd) != NULL)
 	{
 		exec(&stack, counter, line, fd);

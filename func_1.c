@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * f_push - push items in the stack
  * @stack: the stack node
@@ -43,6 +44,16 @@ void f_pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
+void f_pint(stack_t **stack, unsigned int line_number)
+{
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_stack(global_data.top), fclose(global_data.file), exit(1);
+	}
+	fprintf(stdout, "%d\n", global_data.value);
+}
+
 /**
  * exec - function that loocking for opcode to execute
  * @line: line read from file
@@ -55,6 +66,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	instruction_t instru[] = {
 	{"push", f_push},
 	{"pall", f_pall},
+	{"pint", f_pint},
 	{NULL, NULL}
 	};
 	int index;
