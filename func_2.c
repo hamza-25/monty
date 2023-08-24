@@ -31,7 +31,7 @@ void f_swap(stack_t **stack, unsigned int line_number)
 		current = current->next;
 		count++;
 	}
-	if (count <= 2)
+	if (count < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
@@ -40,8 +40,9 @@ void f_swap(stack_t **stack, unsigned int line_number)
 	(*stack)->next = temp->next;
 	(*stack)->prev = temp;
 	temp->prev = NULL;
-	temp->next->prev = (*stack);
 	temp->next = (*stack);
+	if ((*stack)->next != NULL)
+		(*stack)->next->prev = (*stack);
 	(*stack) = temp;
 	global_data.top = *stack;
 }
