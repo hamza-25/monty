@@ -110,7 +110,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 				if (strcmp(instru[index].opcode, "push") == 0)
 				{
 					token = strtok(NULL, " \n\t$");
-					if (!token || atoi(token) == 0)
+					if (!token || (atoi(token) == 0 && strcmp(token, "0") != 0))
 					{
 						fprintf(stderr, "L%d: usage: push integer\n", num_line);
 						free_stack(global_data.top), fclose(file), exit(1);
