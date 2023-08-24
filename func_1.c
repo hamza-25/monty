@@ -8,7 +8,7 @@ void f_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
 
-	if (!stack || !(*stack))
+	if (!stack)
 		exit(1);
 	(void)line_number;
 	if (!new_node)
