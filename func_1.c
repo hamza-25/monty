@@ -99,7 +99,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	char *token;
 
 	(void)file;
-	token = strtok(line, " \n\t");
+	token = strtok(line, "$ \n\t");
 	while (token)
 	{
 		index = 0;
@@ -127,6 +127,6 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 			fprintf(stderr, "L%d: unknown instruction %s\n", num_line, token);
 			free_stack(global_data.top), fclose(file), exit(1);
 		}
-		token = strtok(NULL, " \n\t");
+		token = strtok(NULL, "$ \n\t");
 	}
 }
