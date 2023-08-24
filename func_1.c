@@ -61,6 +61,27 @@ void f_pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * f_pop - function that delete node from the head
+ * @line_number: number of line read from file
+ * @stack: the stack node
+*/
+
+void f_pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(global_data.top), fclose(global_data.file), exit(1);
+	}
+	*stack = (*stack)->next;
+	global_data.top = *stack;
+	free(temp);
+	temp = NULL;
+}
+
+/**
  * exec - function that loocking for opcode to execute
  * @line: line read from file
  * @num_line: number of lines from file
@@ -73,6 +94,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	{"push", f_push},
 	{"pall", f_pall},
 	{"pint", f_pint},
+	{"pop", f_pop},
 	{NULL, NULL}
 	};
 	int index;
