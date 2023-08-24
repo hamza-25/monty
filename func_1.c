@@ -91,10 +91,8 @@ void f_pop(stack_t **stack, unsigned int line_number)
 void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 {
 	instruction_t instru[] = {
-	{"push", f_push},
-	{"pall", f_pall},
-	{"pint", f_pint},
-	{"pop", f_pop},
+	{"push", f_push}, {"pall", f_pall},
+	{"pint", f_pint}, {"pop", f_pop},
 	{NULL, NULL}
 	};
 	int index;
