@@ -71,3 +71,14 @@ void f_add(stack_t **stack, unsigned int line_number)
 	global_data.top = *stack;
 	free(temp);
 }
+
+/**
+ * f_nop - function dont do anything
+ * @line_number: number of line read from file
+ * @stack: the stack node
+*/
+void f_nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
