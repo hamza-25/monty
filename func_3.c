@@ -55,7 +55,7 @@ void f_mul(stack_t **stack, unsigned int line_number)
 	}
 	keep = (*stack)->n;
 	*stack = (*stack)->next;
-	(*stack)->n = ((*stack)->n) * keep;
+	(*stack)->n = (*stack)->n * keep;
 	global_data.top = *stack;
 	free(temp);
 }
