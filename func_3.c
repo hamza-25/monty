@@ -20,7 +20,7 @@ void f_div(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
 	}
-	if (current->n == 0)
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
