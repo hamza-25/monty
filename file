@@ -1,4 +1,4 @@
-push 5
-push 2
-# mod
-pall
+push 70
+pchar
+push 65
+pchar

@@ -91,3 +91,24 @@ void f_mod(stack_t **stack, unsigned int line_number)
 	global_data.top = *stack;
 	free(temp);
 }
+
+/**
+ * f_pchar - function that print char from his ascii code
+ * @line_number: number of line read from file
+ * @stack: the stack node
+ */
+
+void f_pchar(stack_t **stack, unsigned int line_number)
+{
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free_stack(global_data.top), fclose(global_data.file), exit(1);
+	}
+	if ((*stack)->n < 65 && (*stack)->n > 90)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free_stack(global_data.top), fclose(global_data.file), exit(1);
+	}
+	fprintf(stdout, "%c\n", (*stack)->n);
+}

@@ -67,5 +67,6 @@ void f_nop(stack_t **stack, unsigned int line_number);
 void f_div(stack_t **stack, unsigned int line_number);
 void f_mul(stack_t **stack, unsigned int line_number);
 void f_mod(stack_t **stack, unsigned int line_number);
+void f_pchar(stack_t **stack, unsigned int line_number);
 void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file);
 #endif

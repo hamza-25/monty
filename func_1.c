@@ -93,13 +93,12 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	instruction_t instru[] = {
 	{"push", f_push}, {"pall", f_pall}, {"swap", f_swap}, {"sub", f_sub},
 	{"pint", f_pint}, {"pop", f_pop}, {"add", f_add}, {"nop", f_nop},
-	{"div", f_div}, {"mul", f_mul}, {"mod", f_mod},
+	{"pchar", f_pchar}, {"mod", f_mod}, {"div", f_div}, {"mul", f_mul},
 	{NULL, NULL}
 	};
 	int index;
 	char *token;
 
-	(void)file;
 	token = strtok(line, " \n\t$");
 	while (token)
 	{
