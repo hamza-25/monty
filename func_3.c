@@ -110,5 +110,10 @@ void f_pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
 	}
+	if ((*stack)->n < 97 && (*stack)->n > 122)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free_stack(global_data.top), fclose(global_data.file), exit(1);
+	}
 	fprintf(stdout, "%c\n", (*stack)->n);
 }
