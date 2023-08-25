@@ -103,6 +103,8 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	token = strtok(line, " \n\t$");
 	while (token)
 	{
+		if (strcmp(token, "#") == 0 || token[0] == '#')
+			return;
 		index = 0;
 		while (instru[index].opcode)
 		{
