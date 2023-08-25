@@ -92,21 +92,21 @@ void f_nop(stack_t **stack, unsigned int line_number)
 
 void f_sub(stack_t **stack, unsigned int line_number)
 {
-        stack_t *current = *stack, *temp = *stack;
-        int count = 0;
+	stack_t *current = *stack, *temp = *stack;
+	int count = 0;
 
-        while (current)
-        {
-                current = current->next;
-                count++;
-        }
-        if (count < 2)
-        {
-                fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-                free_stack(global_data.top), fclose(global_data.file), exit(1);
+	while (current)
+	{
+	        current = current->next;
+		count++;
 	}
-        *stack = (*stack)->next;
-        (*stack)->n = (*stack)->n - (*stack)->prev->n;
-        global_data.top = *stack;
-        free(temp);
+	if (count < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		free_stack(global_data.top), fclose(global_data.file), exit(1);
+	}
+	*stack = (*stack)->next;
+	(*stack)->n = (*stack)->n - (*stack)->prev->n;
+	global_data.top = *stack;
+	free(temp);
 }
