@@ -23,8 +23,8 @@ void free_stack(stack_t *top)
 
 void f_swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t/* *temp = NULL,*/ *current = *stack;
-	int count = 0, keep;
+	stack_t *temp = NULL, *current = *stack;
+	int count = 0;
 
 	while (current)
 	{
@@ -36,10 +36,7 @@ void f_swap(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
 	}
-keep = (*stack)->n;
-(*stack)->n = (*stack)->next->n;
-(*stack)->next->n = keep;
-	/*temp = (*stack)->next;
+	temp = (*stack)->next;
 	(*stack)->next = temp->next;
 	(*stack)->prev = temp;
 	temp->prev = NULL;
@@ -47,7 +44,7 @@ keep = (*stack)->n;
 	if ((*stack)->next != NULL)
 		(*stack)->next->prev = (*stack);
 	(*stack) = temp;
-	global_data.top = *stack;*/
+	global_data.top = *stack;
 }
 
 /**
