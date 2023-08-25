@@ -97,7 +97,7 @@ void f_sub(stack_t **stack, unsigned int line_number)
 
 	while (current)
 	{
-	        current = current->next;
+		current = current->next;
 		count++;
 	}
 	if (count < 2)
