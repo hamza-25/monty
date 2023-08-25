@@ -50,7 +50,7 @@ void f_mul(stack_t **stack, unsigned int line_number)
 	}
 	if (count < 2)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
 	}
 	keep = (*stack)->n;
