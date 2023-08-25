@@ -63,7 +63,7 @@ void f_add(stack_t **stack, unsigned int line_number)
 		current = current->next;
 		count++;
 	}
-	if (count <= 2)
+	if (count < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		free_stack(global_data.top), fclose(global_data.file), exit(1);		}
