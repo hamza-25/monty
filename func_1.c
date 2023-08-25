@@ -93,6 +93,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	instruction_t instru[] = {
 	{"push", f_push}, {"pall", f_pall}, {"swap", f_swap}, {"sub", f_sub},
 	{"pint", f_pint}, {"pop", f_pop}, {"add", f_add}, {"nop", f_nop},
+	{"div", f_div},
 	{NULL, NULL}
 	};
 	int index;
