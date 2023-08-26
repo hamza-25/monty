@@ -113,3 +113,26 @@ void f_pchar(stack_t **stack, unsigned int line_number)
 		free_stack(global_data.top), fclose(global_data.file), exit(1);
 	}
 }
+
+/**
+ * f_pstr - function that print string from his ascii code
+ * @line_number: number of line read from file
+ * @stack: the stack node
+ */
+
+void f_pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	(void)line_number;
+	while(current)
+	{
+		if ((current->n) == 0)
+			break;
+		if (!(current->n >= 0 && current->n <= 127))
+			break;
+		fprintf(stdout, "%c", current->n);
+		current = current->next;
+	}
+	fprintf(stdout, "\n");
+}

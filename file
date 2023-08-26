@@ -1,5 +1,4 @@
-push 10
-push 100
-push 50
-sub
-pall
+push 90
+push 150
+push 70
+pstr
