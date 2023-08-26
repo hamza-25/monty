@@ -1,4 +1,1 @@
-push 90
-push 150
-push 70
-pstr
+ push 98; pstr Holberton; pall
