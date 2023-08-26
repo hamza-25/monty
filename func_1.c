@@ -99,6 +99,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 	int index;
 	char *token;
 
+	(void)file;
 	token = strtok(line, " \n\t$");
 	while (token)
 	{
@@ -113,10 +114,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 				{
 					token = strtok(NULL, " \n\t$");
 					if (!token || (atoi(token) == 0 && strcmp(token, "0") != 0))
-					{
-						fprintf(stderr, "L%d: usage: push integer\n", num_line);
-						free_stack(global_data.top), fclose(file), exit(1);
-					}
+						err_msg("usage: push integer", num_line);
 					global_data.value = atoi(token);
 				}
 				instru[index].f(stack, num_line);
@@ -125,10 +123,7 @@ void exec(stack_t **stack, unsigned int num_line, char *line, FILE *file)
 			index++;
 		}
 		if (instru[index].opcode == NULL)
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", num_line, token);
-			free_stack(global_data.top), fclose(file), exit(1);
-		}
+			err_msg_tok("unknown instruction", num_line, token);
 		token = strtok(NULL, " \n\t$");
 	}
 }

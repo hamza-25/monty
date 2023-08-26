@@ -1,4 +1,5 @@
-push 70
-pchar
-push 65
-pchar
+push 10
+push 100
+push 50
+sub
+pall
